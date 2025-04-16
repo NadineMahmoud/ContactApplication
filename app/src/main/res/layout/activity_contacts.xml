@@ -50,7 +50,7 @@
             android:adjustViewBounds="true"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/artboard_1" />
+            app:lottie_rawRes="@raw/state_not_found" />
 
         <TextView
             android:layout_width="match_parent"
