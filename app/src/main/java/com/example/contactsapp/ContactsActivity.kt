@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.example.contactsapp.databinding.ActivityContactsBinding
+import com.example.contactsapp.databinding.ContactEnterBinding
+import com.example.contactsapp.databinding.ItemContactBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class ContactsActivity : AppCompatActivity() {
@@ -18,13 +20,32 @@ class ContactsActivity : AppCompatActivity() {
 
         updateUI()
         intitContactRV()
+        OnAddContactClick()
     }
-    private fun OnAddContactClick(){
-        binding.floatingBtn.setOnClickListener{
+    private fun OnAddContactClick() {
+        binding.floatingBtn.setOnClickListener {
             val bottomSheetDialog = BottomSheetDialog(this)
+            val bottomSheetBinding = ContactEnterBinding.inflate(layoutInflater)
 
+            bottomSheetDialog.setContentView(bottomSheetBinding.root)
+                bottomSheetDialog.show()
+                bottomSheetBinding.addContactBtn.setOnClickListener {
+            //        if (!validateTextField(bottomSheetBinding)) {
+                        return@setOnClickListener
 
+            //    }
+            }
         }
+    }
+
+    private fun validateTextField(binding: ItemContactBinding): Boolean {
+
+        val name = binding.name.text?.trim().toString()
+        val email = binding.mail.text?.trim().toString()
+        val phone = binding.phone.text?.trim().toString()
+
+        return true
+
     }
 
     private fun intitContactRV() {
@@ -34,6 +55,7 @@ class ContactsActivity : AppCompatActivity() {
             adapter.deleteContact(position)
             updateUI()
         }
+
     }
 
     private fun updateUI() {

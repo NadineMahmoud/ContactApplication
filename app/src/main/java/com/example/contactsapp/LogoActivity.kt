@@ -1,5 +1,6 @@
 package com.example.contactsapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.activity.enableEdgeToEdge
@@ -17,7 +18,9 @@ class LogoActivity : AppCompatActivity() {
 
     }
     private fun navigateToContactsActivity() {
-            TODO("Not yet implemented")
+        val intent = Intent(this, ContactsActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
 }

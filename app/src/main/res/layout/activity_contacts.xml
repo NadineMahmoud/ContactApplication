@@ -67,13 +67,13 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floating_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="19dp"
+        android:layout_height="22dp"
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
+        android:backgroundTint="@color/primary"
         android:contentDescription="@string/add"
         android:padding="10dp"
-        android:backgroundTint="@color/primary"
-        android:src="@drawable/add_con"/>
+        android:src="@drawable/add_con" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

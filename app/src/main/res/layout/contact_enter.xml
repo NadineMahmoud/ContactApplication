@@ -14,7 +14,6 @@
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_marginTop="20dp"
         android:hint="Name"
-        app:errorIconDrawable="null"
         app:hintTextColor="@color/primary"
         app:endIconMode="clear_text">
         <com.google.android.material.textfield.TextInputEditText
@@ -34,7 +33,6 @@
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_marginTop="20dp"
         android:hint="Name"
-        app:errorIconDrawable="null"
         app:hintTextColor="@color/primary"
         app:endIconMode="clear_text">
         <com.google.android.material.textfield.TextInputEditText
@@ -53,8 +51,7 @@
         android:layout_height="wrap_content"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_marginTop="20dp"
-        android:hint="Name"
-        app:errorIconDrawable="null"
+        android:hint="Phone Number"
         app:hintTextColor="@color/primary"
         app:endIconMode="clear_text"
         >
