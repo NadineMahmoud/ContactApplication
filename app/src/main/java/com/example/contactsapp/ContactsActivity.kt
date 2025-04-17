@@ -1,10 +1,11 @@
 package com.example.contactsapp
 
+import ValidationUtils.validateName
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.example.contactsapp.databinding.ActivityContactsBinding
-import com.example.contactsapp.databinding.ContactEnterBinding
+import com.example.contactsapp.databinding.BottomSheetBinding
 import com.example.contactsapp.databinding.ItemContactBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
@@ -25,26 +26,39 @@ class ContactsActivity : AppCompatActivity() {
     private fun OnAddContactClick() {
         binding.floatingBtn.setOnClickListener {
             val bottomSheetDialog = BottomSheetDialog(this)
-            val bottomSheetBinding = ContactEnterBinding.inflate(layoutInflater)
-
+            val bottomSheetBinding = BottomSheetBinding.inflate(layoutInflater)
             bottomSheetDialog.setContentView(bottomSheetBinding.root)
                 bottomSheetDialog.show()
                 bottomSheetBinding.addContactBtn.setOnClickListener {
-            //        if (!validateTextField(bottomSheetBinding)) {
+                  if (!validateTextField(bottomSheetBinding)) {
                         return@setOnClickListener
 
-            //    }
+               }
+                    val contact = Contact(name = bottomSheetBinding.nameEdit.text.toString(),
+                        phone = bottomSheetBinding.phoneEdit.text.toString(),
+                        email = bottomSheetBinding.emailEdit.text.toString(),)
+
+
+                    adapter.addContact(contact)
+                    updateUI()
             }
         }
     }
 
-    private fun validateTextField(binding: ItemContactBinding): Boolean {
+    private fun validateTextField(binding: BottomSheetBinding): Boolean {
 
-        val name = binding.name.text?.trim().toString()
-        val email = binding.mail.text?.trim().toString()
-        val phone = binding.phone.text?.trim().toString()
+        val name = binding.nameEdit.text?.trim().toString()
+        val email = binding.emailEdit.text?.trim().toString()
+        val phone = binding.phoneEdit.text?.trim().toString()
 
-        return true
+       val nameError = validateName(name)
+        val mailError=  ValidationUtils.validateEmail(email)
+        val phoneError=  ValidationUtils.validatePhone(phone)
+
+        binding.nameLayout.error = nameError
+        binding.emaillayout.error = mailError
+        binding.phoneLayout.error = phoneError
+        return nameError == null && mailError == null && phoneError == null
 
     }
 

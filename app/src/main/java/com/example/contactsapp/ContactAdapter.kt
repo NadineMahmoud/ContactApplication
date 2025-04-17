@@ -20,6 +20,11 @@ class ContactAdapter : RecyclerView.Adapter<ContactAdapter.contactViewHolder>() 
 
     }fun isEmpty() =contactList.isEmpty()
 
+    fun addContact(contact: Contact) {
+        contactList.add(contact)
+        notifyItemInserted(contactList.size - 1)
+    }
+
     class contactViewHolder(val binding: ItemContactBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(contact: Contact) {
